@@ -17,7 +17,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
-public class ExercisesOrig {
+public class Exercises {
 
 // Exercise 1: Print out all the words in wordList, which is
 // a static List<String> defined at the bottom of this file.
