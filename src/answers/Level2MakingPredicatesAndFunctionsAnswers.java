@@ -55,7 +55,7 @@ public class Level2MakingPredicatesAndFunctionsAnswers {
     }
 
 /*
-    Given: List of integers. Using streams filter odd values and output the maximal one.
+    Given: List of integers. Using streams filter even values and output the maximal one.
     1) using stream max
     2) using IntStream max
     3) using stream reduce + Integer max function
@@ -97,6 +97,7 @@ public class Level2MakingPredicatesAndFunctionsAnswers {
         assertEquals(8, maxInStream);
         assertEquals(8, maxInIntStream);
         assertEquals(8, maxUsingReduce);
+        assertEquals(8, maxUsingCollectorsReduceOwn);
         assertEquals(8, maxUsingComparatorMax);
         assertEquals(8, maxUsingCollectorsReduce);
         assertEquals(8, maxUsingCollectorsSummarizing);
