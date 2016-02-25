@@ -1,4 +1,7 @@
-package java8.exercises;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Ignore;
+import org.junit.Test;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,15 +12,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+/**
+ * Hint: Use forEach, filter, map,
+ * */
 
-public class Exercises {
+public class Level1 {
 
 // Exercise 1: Print out all the words in wordList, which is
 // a static List<String> defined at the bottom of this file.
