@@ -25,10 +25,10 @@ public class Level2MakingPredicatesAndFunctions {
 
         //given
         //TODO: write your implementation instead of nulls and 0
-        Predicate<Integer> getOdd = null;
+        Predicate<Integer> getEven = null;
 
         //when
-        List<Integer> odd2To5Values = null;
+        List<Integer> even2To5Values = null;
         long sumOfIntStream = 0;
 
         long sumSummarizing = 0;
@@ -40,7 +40,7 @@ public class Level2MakingPredicatesAndFunctions {
         long sumReduceInteger = 0;
 
         //then
-        assertEquals(Arrays.asList(6, 4, 8), odd2To5Values);
+        assertEquals(Arrays.asList(6, 4, 8), even2To5Values);
         assertEquals(18, sumOfIntStream);
         assertEquals(18, sumSummarizing);
         assertEquals(18, sumSumming);
@@ -50,7 +50,7 @@ public class Level2MakingPredicatesAndFunctions {
     }
 
     /* Exercise 2
-    Given: List of integers. Using streams filter odd values and output the maximal one.
+    Given: List of integers. Using streams filter even values and output the maximal one.
     1) using stream max
     2) using IntStream max
     3) using stream reduce + Integer max function
@@ -66,7 +66,7 @@ public class Level2MakingPredicatesAndFunctions {
         //TODO: write your implementation instead of nulls and 0
 
         //given
-        Predicate<Integer> getOdd = null;
+        Predicate<Integer> getEven = null;
 
         //when
         //1)
