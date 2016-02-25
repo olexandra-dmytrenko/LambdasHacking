@@ -25,7 +25,7 @@ import static org.junit.Assert.assertFalse;
 
 // Answers: https://github.com/NightHacking/LambdasHacking/blob/master/Code/test/exercises/answers/ExerciseAnswers.java
 
-public class Level3Answers {
+public class Level1And3Answers {
 
 // Exercise 1: Print out all the words in wordList, which is
 // a static List<String> defined at the bottom of this file.
