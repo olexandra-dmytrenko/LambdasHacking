@@ -1,22 +1,26 @@
+package answers;
+
 import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
 
 /**
  * Created by olexandra on 2/25/16.
  */
-public class Level2MakingPredicatesAndFunctions {
+public class Level2MakingPredicatesAndFunctionsAnswers {
 
     List<Integer> numbers = Arrays.asList(2, 8, 5, 1, 6, 4, 9, 7, 8, 4, 0);
 
 
-    /* Exercise 1
+    /*
     Given: List of more than 10 integers. Using streams filter even values and output the sum of 3 -5 elements.
      */
     @Test
@@ -24,20 +28,21 @@ public class Level2MakingPredicatesAndFunctions {
     public void SumOf3Dash5Elemnts() {
 
         //given
-        //TODO: write your implementation instead of nulls and 0
-        Predicate<Integer> getOdd = null;
+        Predicate<Integer> getOdd = curInt -> curInt % 2 == 0;
 
         //when
-        List<Integer> odd2To5Values = null;
-        long sumOfIntStream = 0;
+        List<Integer> odd2To5Values = numbers.stream().filter(getOdd).limit(5).skip(2).collect(Collectors.toList());
+        long sumOfIntStream = odd2To5Values.stream().mapToInt(Integer::intValue).sum();
 
-        long sumSummarizing = 0;
+        long sumSummarizing = numbers.stream().filter(getOdd).limit(5).skip(2)
+                .collect(Collectors.summarizingInt(Integer::intValue)).getSum();
 
-        long sumSumming = 0;
+        long sumSumming = numbers.stream().filter(getOdd).limit(5).skip(2)
+                .collect(Collectors.summingInt(Integer::intValue));
 
-        long sumReduceOwn = 0;
+        long sumReduceOwn = odd2To5Values.stream().reduce(0, (a, b) -> a + b);
 
-        long sumReduceInteger = 0;
+        long sumReduceInteger = odd2To5Values.stream().reduce(Integer::sum).get();
 
         //then
         assertEquals(Arrays.asList(6, 4, 8), odd2To5Values);
@@ -49,7 +54,7 @@ public class Level2MakingPredicatesAndFunctions {
 
     }
 
-    /* Exercise 2
+/*
     Given: List of integers. Using streams filter odd values and output the maximal one.
     1) using stream max
     2) using IntStream max
@@ -63,45 +68,42 @@ public class Level2MakingPredicatesAndFunctions {
     @Ignore
     public void filterOddMax() {
 
-        //TODO: write your implementation instead of nulls and 0
-
         //given
-        Predicate<Integer> getOdd = null;
+        Predicate<Integer> getOdd = curInt -> curInt % 2 == 0;
 
         //when
         //1)
-        int maxInStream = 0;
+        int maxInStream = (numbers).stream().filter(getOdd).max(Comparator.naturalOrder()).get();
 
         //2)
-        int maxInIntStream = 0;
+        int maxInIntStream = (numbers).stream().filter(getOdd).mapToInt(Integer::intValue).max().getAsInt();
 
         //3.1)
-        int maxUsingReduce = 0;
+        int maxUsingReduce = (numbers).stream().filter(getOdd).reduce(Integer::max).get();
 
         //3.2)
-        int maxUsingCollectorsReduceOwn = 0;
+        int maxUsingCollectorsReduceOwn = (numbers).stream().filter(getOdd).reduce(0, (a, b) -> Integer.max(a, b)).intValue();
 
         //4)
-        int maxUsingComparatorMax = 0;
+        int maxUsingComparatorMax = (numbers).stream().filter(getOdd).collect(Collectors.maxBy(Comparator.naturalOrder())).get();
 
         //5)
-        int maxUsingCollectorsReduce = 0;
+        int maxUsingCollectorsReduce = (numbers).stream().filter(getOdd).collect(Collectors.reducing(Integer::max)).get();
 
         //6)
-        int maxUsingCollectorsSummarizing = 0;
+        int maxUsingCollectorsSummarizing = (numbers).stream().filter(getOdd).collect(Collectors.summarizingInt(Integer::intValue)).getMax();
 
         //then
         assertEquals(8, maxInStream);
         assertEquals(8, maxInIntStream);
         assertEquals(8, maxUsingReduce);
-        assertEquals(8, maxUsingCollectorsReduceOwn);
         assertEquals(8, maxUsingComparatorMax);
         assertEquals(8, maxUsingCollectorsReduce);
         assertEquals(8, maxUsingCollectorsSummarizing);
 
     }
 
-    /* Exercise 3
+        /* Exercise 1
             Write the function which will compare (gt) current int of the stream with the input int and return predicate:
          Function<Integer, Predicate<Integer>> compareNumbers.
         */
@@ -112,10 +114,10 @@ public class Level2MakingPredicatesAndFunctions {
 
         //given
         final int intToCompare = 4;
-        Function<Integer, Predicate<Integer>> getGreaterThan = null;
+        Function<Integer, Predicate<Integer>> getGreaterThan = withWhatToCompare -> whatToCompare -> whatToCompare > withWhatToCompare;
 
         //when
-        List<Integer> actual = null;
+        List<Integer> actual = numbers.stream().filter(getGreaterThan.apply(intToCompare)).collect(Collectors.toList());
 
         //then
         assertEquals(Arrays.asList(8, 5, 6, 9, 7, 8), actual);
