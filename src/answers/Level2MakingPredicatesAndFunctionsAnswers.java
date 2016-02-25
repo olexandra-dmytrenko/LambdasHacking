@@ -66,7 +66,7 @@ public class Level2MakingPredicatesAndFunctionsAnswers {
 
     @Test
     @Ignore
-    public void filterOddMax() {
+    public void filterEvenMax() {
 
         //given
         Predicate<Integer> getOdd = curInt -> curInt % 2 == 0;
