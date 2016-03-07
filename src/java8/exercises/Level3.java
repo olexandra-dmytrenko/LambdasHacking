@@ -1,3 +1,5 @@
+package java8.exercises;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
@@ -46,8 +48,8 @@ public class Level3 {
                 "due", "by", "the", "grave", "and", "thee"),
             output);
     }
-    
-// Exercise 8: Create a list containing the words, lowercased, in alphabetical order.
+
+// Exercise 8: Create a list containing the words which are put to lowercase in alphabetical order.
     
     @Test @Ignore
     public void sortedLowerCase() throws IOException {
