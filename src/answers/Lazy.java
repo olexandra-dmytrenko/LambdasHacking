@@ -24,7 +24,6 @@ public class Lazy {
     }
 
     public String getStringUse() {
-
         return use(() -> "I'm use implementation in getString");
     }
 
@@ -39,6 +38,5 @@ public class Lazy {
         System.out.println(getString());
         // System.out.println(getStringUse());
         // getStringVoid();
-
     }
 }
