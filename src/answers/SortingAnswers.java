@@ -13,22 +13,43 @@ import static org.junit.Assert.assertEquals;
 /**
  * Created by olexandra on 3/10/16.
  */
-public class Sorting {
+public class SortingAnswers {
 
-    List list;
-
+    /**
+     * Ex 1. Sort the List ascending
+     */
 
     @Test
-    public void sortListSimple() {
+    public void sortListAsc() {
 
 //given
-        list = Arrays.asList("Maria", "Victor", "Pavel", "Alfina", "Sasha");
+        List<String> list = Arrays.asList("Maria", "Victor", "Pavel", "Alfina", "Sasha");
 //when
         List actual = (List) list.stream().sorted().collect(Collectors.toList());
 //then
         List<String> expected = Arrays.asList("Alfina", "Maria", "Pavel", "Sasha", "Victor");
         assertEquals(expected, actual);
     }
+
+    /**
+     * Ex 2. Sort the List descending
+     */
+
+    @Test
+    public void sortListDesc() {
+
+//given
+        List<String> list = Arrays.asList("Maria", "Victor", "Pavel", "Alfina", "Sasha");
+//when
+        List actual = (List) list.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
+//then
+        List<String> expected = Arrays.asList("Victor", "Sasha", "Pavel", "Maria", "Alfina");
+        assertEquals(expected, actual);
+    }
+
+    /**
+     * Ex 3. Sort the list of FamilyMembers first by name and then my age
+     */
 
     @Test
     public void sortListObject() {
@@ -126,5 +147,4 @@ public class Sorting {
             return result;
         }
     }
-
 }
