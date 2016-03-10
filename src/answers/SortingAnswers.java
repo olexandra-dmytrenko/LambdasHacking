@@ -78,6 +78,57 @@ public class SortingAnswers {
         list.stream().sorted(compareNameThenAge).forEach(System.out::println);
         System.out.println("---------");
 
+        //////////////Live Codding//////////////
+        List<FamilyMember> actualName = list.stream()
+                .sorted((fm1, fm2) -> fm1.getName().compareTo(fm2.getName()))
+                .collect(Collectors.toList());
+        System.out.println("--------");
+        System.out.println("Sorted Family by name");
+        actualName.stream().forEach(System.out::println);
+
+        List<FamilyMember> actualNameAge = list.stream()
+                .sorted((fm1, fm2) -> fm1.getName().compareTo(fm2.getName()))
+                .sorted((fm1, fm2) -> ((Integer) fm1.getAge()).compareTo(fm2.getAge()))
+                .collect(Collectors.toList());
+        System.out.println("--------");
+        System.out.println("Sorted Family by name and age bad");
+        actualNameAge.stream().forEach(System.out::println);
+
+        List<FamilyMember> actualAge = list.stream()
+                .sorted((fm1, fm2) -> ((Integer) fm1.getAge()).compareTo(fm2.getAge()))
+                .collect(Collectors.toList());
+        System.out.println("--------");
+        System.out.println("Sorted Family by age");
+        actualAge.stream().forEach(System.out::println);
+
+        Comparator<FamilyMember> compareName = (fm1, fm2) -> fm1.getName().compareTo(fm2.getName());
+        Comparator<FamilyMember> compareAge = (fm1, fm2) -> ((Integer) fm1.getAge()).compareTo(fm2.getAge());
+
+        Comparator<FamilyMember> compareNameAge = compareName.thenComparing(compareAge);
+
+//        List<FamilyMember> actualNameAgeGood = list.stream()
+//                .sorted(compareNameAge)
+//                .collect(Collectors.toList());
+
+//        List<FamilyMember> actualNameAgeGood = list.stream()
+//                .sorted(Comparator.comparing(FamilyMember::getName).thenComparing(compareAge))
+//                .collect(Collectors.toList());
+
+        List<FamilyMember> actualNameAgeGood = list.stream()
+                .sorted(Comparator.comparing(FamilyMember::getName)
+                        .thenComparing((FamilyMember::getAge)))
+                .collect(Collectors.toList());
+        System.out.println("--------");
+        System.out.println("Sorted Family by name and age good");
+        actualNameAgeGood.stream().forEach(System.out::println);
+
+        Collections.sort(list, compareNameAge);
+        System.out.println("--------");
+        System.out.println("Sorted Family by name and age using Collections");
+        list.stream().forEach(System.out::println);
+        //////////////Live Codding Closed//////////////
+
+
         //Sort by name and age using Comparator
         Collections.sort(list, compareNameThenAge);
         list.stream().forEach(System.out::println);

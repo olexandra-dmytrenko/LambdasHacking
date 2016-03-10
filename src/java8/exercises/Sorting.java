@@ -58,10 +58,12 @@ public class Sorting {
                 new FamilyMember("Vitalina Fedorovna", 70, "grandmother"),
                 new FamilyMember("Vitalij Valerianovich", 70, "grandfather"));
 
+        System.out.println("---------------This is the initial array---------------");
+        list.stream().forEach(System.out::println);
+
 //when
 // TODO: insert the code which updates list heres
 
-        list.stream().forEach(System.out::println);
         List<FamilyMember> expected = Arrays.asList(
                 new FamilyMember("Illina Petrovna", 50, "grandma"),
                 new FamilyMember("Illina Petrovna", 89, "great grandma"),
@@ -98,34 +100,6 @@ public class Sorting {
 
         public String getRole() {
             return role;
-        }
-
-        @Override
-        public String toString() {
-            return name +
-                    ", age=" + age +
-                    ", role=" + role;
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (!(obj instanceof FamilyMember))
-                return false;
-            if (obj == this)
-                return true;
-            if (obj != null) {
-                FamilyMember member = (FamilyMember) obj;
-                return name.equals(member.getName()) && age == member.getAge() && role.equals(member.getRole());
-            } else
-                return this == null;
-        }
-
-        @Override
-        public int hashCode() {
-            int result = name.hashCode();
-            result = 31 * result + age;
-            result = 31 * result + role.hashCode();
-            return result;
         }
     }
 }
