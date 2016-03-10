@@ -1,10 +1,7 @@
 import org.junit.Test;
 
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
 
@@ -14,19 +11,40 @@ import static org.junit.Assert.assertEquals;
 public class Sorting {
 
     /**
-     * Sort the List ascending
+     * Ex 1. Sort the List ascending
      */
+
     @Test
-    public void sortListSimple() {
+    public void sortListAsc() {
 
 //given
         List<String> list = Arrays.asList("Maria", "Victor", "Pavel", "Alfina", "Sasha");
 //when
-        List actual = (List) list.stream().sorted().collect(Collectors.toList());
+        List actual = null; //TODO write your implementation here
 //then
         List<String> expected = Arrays.asList("Alfina", "Maria", "Pavel", "Sasha", "Victor");
         assertEquals(expected, actual);
     }
+
+    /**
+     * Ex 2. Sort the List descending
+     */
+
+    @Test
+    public void sortListDesc() {
+
+//given
+        List<String> list = Arrays.asList("Maria", "Victor", "Pavel", "Alfina", "Sasha");
+//when
+        List actual = null; //TODO write your implementation here
+//then
+        List<String> expected = Arrays.asList("Victor", "Sasha", "Pavel", "Maria", "Alfina");
+        assertEquals(expected, actual);
+    }
+
+    /**
+     * Ex 3. Sort the list of FamilyMembers first by name and then my age
+     */
 
     @Test
     public void sortListObject() {
@@ -41,22 +59,8 @@ public class Sorting {
                 new FamilyMember("Vitalij Valerianovich", 70, "grandfather"));
 
 //when
+// TODO: insert the code which updates list heres
 
-        //Sort by name
-        list.stream().sorted((m1, m2) -> m1.getName().compareTo(m2.getName())).forEach(System.out::println);
-        System.out.println("---------");
-
-        //Sort by age and name - don't do that
-        list.stream().sorted((m1, m2) -> m1.getName().compareTo(m2.getName())).sorted((m1, m2) -> ((Integer) m1.getAge()).compareTo(m2.getAge())).forEach(System.out::println);
-        System.out.println("---------");
-
-        //Sort by name and age
-        Comparator<FamilyMember> compareNameThenAge = Comparator.comparing(FamilyMember::getName).thenComparing(FamilyMember::getAge);
-        list.stream().sorted(compareNameThenAge).forEach(System.out::println);
-        System.out.println("---------");
-
-        //Sort by name and age using Comparator
-        Collections.sort(list, compareNameThenAge);
         list.stream().forEach(System.out::println);
         List<FamilyMember> expected = Arrays.asList(
                 new FamilyMember("Illina Petrovna", 50, "grandma"),
@@ -124,5 +128,4 @@ public class Sorting {
             return result;
         }
     }
-
 }
