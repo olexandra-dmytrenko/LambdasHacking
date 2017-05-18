@@ -42,7 +42,7 @@ public class Level1 {
     }
 
 // Exercise 1: Print out all the words in wordList, which is
-// a static List<String> defined at this file.
+// a static List<String> defined at the bottom of this file.
 
     @Test @Ignore
     public void printAllWords() {
