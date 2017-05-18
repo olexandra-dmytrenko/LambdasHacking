@@ -18,8 +18,31 @@ import static org.junit.Assert.assertEquals;
 
 public class Level1 {
 
+    // ===== TEST INFRASTRUCTURE ==================================================
+
+    static List<String> wordList = Arrays.asList(
+        "every", "problem", "in", "computer", "science",
+        "can", "be", "solved", "by", "adding", "another",
+        "level", "of", "indirection");
+    // Butler Lampson
+
+    static final String REGEXP = "\\W+"; // for splitting into words
+
+    private BufferedReader reader;
+
+    @Before
+    public void setUpBufferedReader() throws IOException {
+        reader = Files.newBufferedReader(
+            Paths.get("SonnetI.txt"), StandardCharsets.UTF_8);
+    }
+
+    @After
+    public void closeBufferedReader() throws IOException {
+        reader.close();
+    }
+
 // Exercise 1: Print out all the words in wordList, which is
-// a static List<String> defined at the bottom of this file.
+// a static List<String> defined at this file.
 
     @Test @Ignore
     public void printAllWords() {
@@ -90,26 +113,5 @@ public class Level1 {
         assertEquals(longest, 53);
     }
 
-// ===== TEST INFRASTRUCTURE ==================================================
 
-    static List<String> wordList = Arrays.asList(
-        "every", "problem", "in", "computer", "science",
-        "can", "be", "solved", "by", "adding", "another",
-        "level", "of", "indirection");
-            // Butler Lampson
-
-    static final String REGEXP = "\\W+"; // for splitting into words
-
-    private BufferedReader reader;
-
-    @Before
-    public void setUpBufferedReader() throws IOException {
-        reader = Files.newBufferedReader(
-                Paths.get("SonnetI.txt"), StandardCharsets.UTF_8);
-    }
-
-    @After
-    public void closeBufferedReader() throws IOException {
-        reader.close();
-    }
 }
